@@ -1,16 +1,14 @@
 import React, {Component} from 'react';
+import {StyledCard} from '../styles/UserCardStyles'
 
 class UserCard extends Component{
-    constructor(){
-        super();
-        this.state = {};
-    }
 
     render(){
         return(
-            <div>
-                <h2>{this.props}</h2>
-            </div>
+            <StyledCard>
+                <h2>Card</h2>
+                {console.log(this.props)}
+            </StyledCard>
         )
     }
 

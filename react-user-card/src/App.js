@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import UserCard from './components/UserCard'
-import axios from 'axios';
+// import axios from 'axios';
+import {data} from './githubData.mjs'
 
-const usersArray = ['jduell12', 'MaryamMosstoufi', 'sage-jordan', 'tsbarrett89', 'emilioramirezeguia', 'Roboblox'];
+//const usersArray = ['jduell12', 'MaryamMosstoufi', 'sage-jordan', 'tsbarrett89', 'emilioramirezeguia', 'Roboblox'];
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      users: usersArray
+      // users: usersArray
+      users: ['octocat']
     };
   }
 
@@ -25,14 +27,28 @@ class App extends Component {
     //     console.log(err);
     //   })
     // })
+    this.state.users.forEach((user) => {
+      this.setState({
+        users: [ data[0]]
+      })
+    })
   }
 
   render(){
     return (
-      <div>
-        {this.state.users.forEach(user => {
-          return <UserCard user={user}/>
-        })}
+      <div className="App">
+        <h1>Github User Cards</h1>
+        {
+          this.state.users.forEach((user) => {
+            if(user.id === undefined){
+              return(<div>Please wait...</div>)
+            } else {
+              console.log("in else in App")
+              return (<UserCard />)
+            }
+
+          })
+        }
       </div>
     )
   }
