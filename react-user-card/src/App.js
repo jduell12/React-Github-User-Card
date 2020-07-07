@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import UserCard from './components/UserCard'
-// import axios from 'axios';
-import {data} from './githubData.mjs'
+import axios from 'axios';
+import {OctoCatdata} from './githubData.js'
 
 const usersArray = ['octocat','jduell12', 'MaryamMosstoufi', 'sage-jordan', 'tsbarrett89', 'emilioramirezeguia', 'Roboblox'];
 
@@ -9,7 +9,6 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      // users: usersArray
       users: usersArray,
       userData: []
     };
@@ -28,11 +27,8 @@ class App extends Component {
     //     console.log(err);
     //   })
     // })
-    this.state.users.forEach((user) => {
-      console.log(user)
-      this.setState({
-        userData: [ user]
-      })
+    this.setState({
+      userData: [...this.state.userData, OctoCatdata]
     })
   }
 
@@ -43,7 +39,9 @@ class App extends Component {
       return (
         <div className="App">
           <h1>Github User Cards</h1>
-          <UserCard users={this.state.userData} />
+          {this.state.userData.map(user => (
+            <UserCard key={user.id} userInfo={user}/>
+          ))}
         </div>
       )
     }
