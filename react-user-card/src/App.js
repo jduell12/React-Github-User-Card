@@ -3,14 +3,15 @@ import UserCard from './components/UserCard'
 // import axios from 'axios';
 import {data} from './githubData.mjs'
 
-//const usersArray = ['jduell12', 'MaryamMosstoufi', 'sage-jordan', 'tsbarrett89', 'emilioramirezeguia', 'Roboblox'];
+const usersArray = ['octocat','jduell12', 'MaryamMosstoufi', 'sage-jordan', 'tsbarrett89', 'emilioramirezeguia', 'Roboblox'];
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
       // users: usersArray
-      users: ['octocat']
+      users: usersArray,
+      userData: []
     };
   }
 
@@ -20,7 +21,7 @@ class App extends Component {
     //   axios.get(`https://api.github.com/users/${user}`)
     //   .then(res => {
     //     this.setState({
-    //       users: [...this.state.users, res.data]
+    //       userData: [...this.state.userData, res.data]
     //     })
     //   })
     //   .catch(err => {
@@ -28,29 +29,24 @@ class App extends Component {
     //   })
     // })
     this.state.users.forEach((user) => {
+      console.log(user)
       this.setState({
-        users: [ data[0]]
+        userData: [ user]
       })
     })
   }
 
   render(){
-    return (
-      <div className="App">
-        <h1>Github User Cards</h1>
-        {
-          this.state.users.forEach((user) => {
-            if(user.id === undefined){
-              return(<div>Please wait...</div>)
-            } else {
-              console.log("in else in App")
-              return (<UserCard />)
-            }
-
-          })
-        }
-      </div>
-    )
+    if(this.state.userData.length === 0){
+      return (<p>Loading Cards...</p>)
+    } else {
+      return (
+        <div className="App">
+          <h1>Github User Cards</h1>
+          <UserCard users={this.state.userData} />
+        </div>
+      )
+    }
   }
 }
 

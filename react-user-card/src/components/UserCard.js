@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+// import UserData from './UserData'
 import {StyledCard} from '../styles/UserCardStyles'
 
 class UserCard extends Component{
@@ -6,8 +7,7 @@ class UserCard extends Component{
     render(){
         return(
             <StyledCard>
-                <h2>Card</h2>
-                {console.log(this.props)}
+                {console.log(this.props.users)}                
             </StyledCard>
         )
     }
