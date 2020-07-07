@@ -10,6 +10,11 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "less": "^3.9.0",
+    "less-watch-compiler": "^1.13.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
