@@ -1,13 +1,35 @@
-import React from 'react';
+import React, {Component} from 'react';
+import axios from 'axios';
 
+const usersArray = ['jduell12', 'MaryamMosstoufi', 'sage-jordan', 'tsbarrett89', 'emilioramirezeguia', 'Roboblox'];
 
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      users: usersArray
+    };
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Working</h1>
-    </div>
-  );
+  componentDidMount(){
+    this.state.users.forEach(user => {
+      console.log(user);
+      axios.get(`https://api.github.com/users/${user}`)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    })
+  }
+
+  render(){
+    return (
+      <div>
+      </div>
+    )
+  }
 }
 
 export default App;
