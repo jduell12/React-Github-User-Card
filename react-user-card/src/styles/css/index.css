@@ -190,3 +190,7 @@ button:hover {
   background-color: black;
   color: white;
 }
+
+#calendar{
+  width: 80%;
+}

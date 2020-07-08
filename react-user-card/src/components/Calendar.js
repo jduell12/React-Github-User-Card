@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
+import {StyledCal} from '../styles/UserCardStyles'
 
 class Calendar extends Component{
     render(){
         return(
-            <div>
+            <StyledCal>
                 <p>Github Calendar</p>
-                <img src={`https://ghchart.rshah.org/${this.props.user}` }alt="github calendar"/>
-            </div>
+                <img id="calendar" src={`https://ghchart.rshah.org/${this.props.user}` }alt="github calendar"/>
+            </StyledCal>
         )
     }
 }

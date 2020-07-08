@@ -8,9 +8,15 @@ export const StyledCard = styled.div `
     padding: 3%;
     width: 800px;
     display:flex;
+    flex-direction: column;
     justify-content: space-around;
 `
 
-export const StyledCal = styled.div`
+export const StyledTop = styled.div`
+    display: flex;
+    justify-content: space-around;
+`
 
+export const StyledCal = styled.div `
+    text-align: center;
 `
