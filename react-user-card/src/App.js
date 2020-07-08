@@ -2,29 +2,46 @@ import React, {Component} from 'react';
 import UserCard from './components/UserCard'
 import axios from 'axios';
 
-const usersArray = ['jduell12', 'MaryamMosstoufi', 'sage-jordan', 'tsbarrett89', 'emilioramirezeguia', 'Roboblox'];
-
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      users: usersArray,
-      userData: []
+      user: 'jduell12',
+      userData: {},
+      userFollowers:[],
+      input: ''
     };
   }
 
   componentDidMount(){
-    this.state.users.forEach(user => {
-      console.log(user);
-      axios.get(`https://api.github.com/users/${user}`)
-      .then(res => {
-        this.setState({
-          userData: [...this.state.userData, res.data]
-        })
+    axios.get(`https://api.github.com/users/${this.state.user}`)
+    .then(res => {
+      this.setState({
+        userData: res.data
       })
-      .catch(err => {
-        console.log(err);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+    axios.get(`https://api.github.com/users/${this.state.user}/followers`)
+    .then(res => {
+      this.setState({
+        userFollowers: res.data
       })
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+  getUser(){
+
+  }
+
+  handleChanges = event => {
+    this.setState({
+      input: event.target.value,
+      user: event.target.value
     })
   }
 
@@ -35,9 +52,17 @@ class App extends Component {
       return (
         <div className="App">
           <h1>Github User Cards</h1>
-          {this.state.userData.map(user => (
-            <UserCard key={user.id} userInfo={user}/>
-          ))}
+          <label htmlFor="userInput">
+            Search for a github user: &nbsp;
+            <input 
+              type="text" 
+              id="userInput"
+              value={this.state.input}
+              onChange={this.handleChanges}
+            />
+          </label>
+          <button onClick={this.getUser}>Search</button>
+          <UserCard userInfo={this.state.userData} followers={this.state.userFollowers}/>
         </div>
       )
     }

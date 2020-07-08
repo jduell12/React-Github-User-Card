@@ -9,9 +9,9 @@ export const StyledCard = styled.div `
     width: 80%;
     display: flex;
     justify-content:space-around;
-    align-items: center;
+    align-items: end;
 `
 
 export const StyledData = styled.div`
-    
+
 `
