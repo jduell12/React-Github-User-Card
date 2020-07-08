@@ -11,6 +11,6 @@ export const StyledCard = styled.div `
     justify-content: space-around;
 `
 
-export const StyledData = styled.div`
+export const StyledCal = styled.div`
 
 `
