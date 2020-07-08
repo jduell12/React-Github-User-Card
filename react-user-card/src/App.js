@@ -35,10 +35,10 @@ class App extends Component {
   }
 
   getUser = event => {
-    this.setState({
-      userData: [],
-      userFollowers: []
-    })
+    // this.setState({
+    //   userData: [],
+    //   userFollowers: []
+    // })
 
     event.preventDefault();
 
@@ -62,6 +62,8 @@ class App extends Component {
     })
 
     this.setState({
+      userData: [],
+      userFollowers: [],
       input: ''
     })
   }
