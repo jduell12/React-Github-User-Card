@@ -5,3 +5,17 @@
     justify-content: @justify;
     align-items: @align;
 }
+
+.btn(@width: 100px, @bg-color: white, @txt-color: black){
+    width: @width;
+    background-color: @bg-color;
+    margin: 0 10px 20px;
+    color: @txt-color;
+    border-radius: 10px;
+    font-size: 1.4rem;
+
+    &:hover{
+        background-color: @txt-color;
+        color:@bg-color
+    }
+}

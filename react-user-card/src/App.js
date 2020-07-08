@@ -34,8 +34,36 @@ class App extends Component {
     })
   }
 
-  getUser(){
+  getUser = event => {
+    this.setState({
+      userData: [],
+      userFollowers: []
+    })
 
+    event.preventDefault();
+
+    axios.get(`https://api.github.com/users/${this.state.user}`)
+    .then(res => {
+      this.setState({
+        userData: res.data
+      })
+    })
+    .catch(err => {
+      console.log(err);
+    });
+    axios.get(`https://api.github.com/users/${this.state.user}/followers`)
+    .then(res => {
+      this.setState({
+        userFollowers: res.data
+      })
+    })
+    .catch(err => {
+      console.log(err);
+    })
+
+    this.setState({
+      input: ''
+    })
   }
 
   handleChanges = event => {
@@ -52,16 +80,18 @@ class App extends Component {
       return (
         <div className="App">
           <h1>Github User Cards</h1>
-          <label htmlFor="userInput">
-            Search for a github user: &nbsp;
-            <input 
-              type="text" 
-              id="userInput"
-              value={this.state.input}
-              onChange={this.handleChanges}
-            />
-          </label>
-          <button onClick={this.getUser}>Search</button>
+          <form onSubmit={this.getUser}>
+            <label htmlFor="userInput">
+              Search for a github user: &nbsp;
+              <input 
+                type="text" 
+                id="userInput"
+                value={this.state.input}
+                onChange={this.handleChanges}
+              />
+            </label>
+            <button >Search</button>
+          </form>
           <UserCard userInfo={this.state.userData} followers={this.state.userFollowers}/>
         </div>
       )

@@ -145,6 +145,8 @@ h1 {
 }
 h2 {
   font-size: 2.75rem;
+  font-weight: 100;
+  font-style: italic;
 }
 h3 {
   font-size: 2.5rem;
@@ -152,10 +154,17 @@ h3 {
 h4 {
   font-size: 2rem;
 }
+li,
 p {
   font-size: 1.4rem;
   margin-bottom: 3px;
   line-height: 2rem;
+}
+label,
+input {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  margin-top: 3%;
 }
 .App {
   display: flex;
@@ -164,7 +173,20 @@ p {
   flex-direction: column;
 }
 img {
-  width: 200px;
+  width: 250px;
+  height: 250px;
   border-radius: 3px;
   margin-right: 20px;
+}
+button {
+  width: 100px;
+  background-color: white;
+  margin: 0 10px 20px;
+  color: black;
+  border-radius: 10px;
+  font-size: 1.4rem;
+}
+button:hover {
+  background-color: black;
+  color: white;
 }
