@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import UserCard from './components/UserCard'
 import axios from 'axios';
-import {OctoCatdata} from './githubData.js'
 
-const usersArray = ['octocat','jduell12', 'MaryamMosstoufi', 'sage-jordan', 'tsbarrett89', 'emilioramirezeguia', 'Roboblox'];
+const usersArray = ['jduell12', 'MaryamMosstoufi', 'sage-jordan', 'tsbarrett89', 'emilioramirezeguia', 'Roboblox'];
 
 class App extends Component {
   constructor(){
@@ -15,20 +14,17 @@ class App extends Component {
   }
 
   componentDidMount(){
-    // this.state.users.forEach(user => {
-    //   console.log(user);
-    //   axios.get(`https://api.github.com/users/${user}`)
-    //   .then(res => {
-    //     this.setState({
-    //       userData: [...this.state.userData, res.data]
-    //     })
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   })
-    // })
-    this.setState({
-      userData: [...this.state.userData, OctoCatdata]
+    this.state.users.forEach(user => {
+      console.log(user);
+      axios.get(`https://api.github.com/users/${user}`)
+      .then(res => {
+        this.setState({
+          userData: [...this.state.userData, res.data]
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
     })
   }
 
